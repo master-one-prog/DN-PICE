@@ -46,10 +46,13 @@ class Organismo():
         self.intestino = Intestino_reto()
 
     def escalar(self, altura):
+
         self.oxigenacao_cerebro -= 10 * altura/3000
         if  self.oxigenacao_cerebro >= 95:
             print("ok!")
+
         elif self.oxigenacao_cerebro <= 94 and self.oxigenacao_cerebro >= 90:
+            self.cerebro(aumentar_batimento())
             print("!!CUIDADO!! HIPOXEMIA LEVE A MODERADA")
             print("SINTOMAS: Falta de ar / Tontura / Dificuldade para raciocinar ") 
 
@@ -58,7 +61,15 @@ class Organismo():
             print("SINTOMAS: Falta de ar intensa / Tontura forte / inicio de Cianose ")
 
         elif self.oxigenacao_cerebro <= 84 and self.oxigenacao_cerebro >= 80:
-            print("")
+            print("!!CUIDADO!! Os órgãos vitais (cérebro, rins e coração) começam a entrar em sofrimento por falta de oxigênio crônica. O cérebro começa a reduzir suas funções para poupar energia.")
+            print("SINTOMAS: letargia, desorientação total no tempo e espaço, extrema dificuldade para falar ou se manter acordado, além de palidez extrema.")
+        
+        elif self.oxigenacao_cerebro <= 80 and self.oxigenacao_cerebro=>71:
+            print("!!CUIDADO!! O cérebro corre risco iminente de sofrer lesões permanentes devido à falta prolongada de oxigenação.")
+            print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.")    
+        else:
+            print("VocÊ tem 6 minutos até lesões irreversíveis nas células cerebrais")
+            print("Você tem 10 minuros até sua morte, Boa sorte")
 
     def meditar(self):
         self.impulsos_nervosos 
