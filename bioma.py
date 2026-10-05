@@ -57,7 +57,6 @@ class Organismo():
         self.bioma = bioma
         self.hidratacao = 100
         self.temperatura = 36.5
-        self.oxigenacao_cerebro = 100
         self.batimento = 85
         self.cerebro = Cerebro() 
         self.intestino = Intestino_reto()
