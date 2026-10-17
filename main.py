@@ -34,5 +34,13 @@ else:
 
 corpo = Bioma.Organismo(nome, idade, bioma)
 
-#print("""Qual ação você deseja fazer? 
-# 1- Escalar """)
+print("""Qual ação você deseja fazer? 
+# 1- Escalar """ )
+
+
+print("")
+acao = int(input("Escolha:"))
+
+if acao == 1:
+    altura = int(input("Qaul altura vc deseja escaalar? (em metros) "))
+    escalar = Bioma.Organismo.Escalar(altura)
