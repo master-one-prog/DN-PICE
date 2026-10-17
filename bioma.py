@@ -105,46 +105,71 @@ class Organismo():
         self.temperatura = 36.5
         self.batimento = 85
         self.cerebro = Cerebro() 
-        self.intestino = Intestino_reto() 
+        self.coracao = Coracao()
 
-    def escalar(self, altura, estacao):
+    def Escalar(self, altura):
  
         self.cerebro.oxigenacao_cerebro -= 10 * altura/3000
-             
+        self.bioma.efeito_bioma()
 
         if  self.oxigenacao_cerebro >= 95:
             print("ok!")
+            print(self.cerebro.oxigenacao_cerebro())
  
-        elif self.oxigenacao_cerebro <= 94 and self.oxigenacao_cerebro >= 90:
-            
+        elif self.cerebro.oxigenacao_cerebro <= 94 and self.oxigenacao_cerebro >= 90:
+            self.cerebro.diminuir_impulsos()
             print("!!CUIDADO!! HIPOXEMIA LEVE A MODERADA")
             print("SINTOMAS: Falta de ar / Tontura / Dificuldade para raciocinar ") 
-
-        elif self.oxigenacao_cerebro <= 89 and self.oxigenacao_cerebro >= 85:
+            print(self.cerebro.oxigenacao_cerebro())
             
+        elif self.cerebro.oxigenacao_cerebro <= 89 and self.oxigenacao_cerebro >= 85:
+            
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
             print("!!CUIDADO!! HIPOXEMIA SEVERA")
             print("SINTOMAS: Falta de ar intensa / Tontura forte / inicio de Cianose ")
-
-        elif self.oxigenacao_cerebro <= 84 and self.oxigenacao_cerebro >= 80:
+            print(self.cerebro.oxigenacao_cerebro())
             
+        elif self.cerebro.oxigenacao_cerebro <= 84 and self.oxigenacao_cerebro >= 80:
+            
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
             print("!!CUIDADO!! Os órgãos vitais (cérebro, rins e coração) começam a entrar em sofrimento por falta de oxigênio crônica. O cérebro começa a reduzir suas funções para poupar energia.")
             print("SINTOMAS: letargia, desorientação total no tempo e espaço, extrema dificuldade para falar ou se manter acordado, além de palidez extrema.")
+            print(self.cerebro.oxigenacao_cerebro())
         
-        elif self.oxigenacao_cerebro <= 80 and self.oxigenacao_cerebro >= 71:
+        elif self.cerebro.oxigenacao_cerebro <= 80 and self.oxigenacao_cerebro >= 71:
              
+             self.cerebro.diminuir_impulsos()
+             self.cerebro.diminuir_impulsos()
+             self.cerebro.diminuir_impulsos()
              print("!!CUIDADO!! O cérebro corre risco iminente de sofrer lesões permanentes devido à falta prolongada de oxigenação.")
-             print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.")    
+             print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.") 
+             print(self.cerebro.oxigenacao_cerebro())
         else:
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
             print("VocÊ tem 6 minutos até lesões irreversíveis nas células cerebrais")
             print("Você tem 10 minuros até sua morte, Boa sorte")
+            print(self.cerebro.oxigenacao_cerebro())
 
     
 
 
 # orgãos
 
-class Intestino_reto():
-    pass
+class Coracao:
+    def __init__(self):
+        self.batimento = 90
+    
+    def aumentar_batimento(self):
+            self.batimento += 50
+    
+    def diminuir_batimento(self):
+            self.batimento -= 20
 
 
 
@@ -153,17 +178,10 @@ class Cerebro():
         self.oxigenacao_cerebro = 100
         self.impulsos_nervosos = 30
 
-
-    def aumentar_batimento(self):
-        self.batimento += 50
-
-    def diminuir_batimento(self):
-        self.batimento -= 20
-
     def aumentar_impulsos(self):
         self.impulsos_nervosos += 60
 
     def diminuir_impulsos(self):
-        self.impulsos_nervosos -= 23
+        self.impulsos_nervosos -= 8
 
         # tem q ser certo os valores de acordo com oq fazem ou posso escolher valores dentro do quadro previsto
