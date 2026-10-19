@@ -42,5 +42,5 @@ print("")
 acao = int(input("Escolha:"))
 
 if acao == 1:
-    altura = int(input("Qaul altura vc deseja escaalar? (em metros) "))
-    escalar = Bioma.Organismo.Escalar(altura)
+    altura = int(input("Qaul altura você deseja escaalar? (em metros) "))
+    corpo.Escalar(altura)
