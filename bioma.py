@@ -1,18 +1,19 @@
 
 from abc import ABC, abstractmethod
+import random
 # BIOMAS 
 
 
-class Bioma(ABC):
+class bioma(ABC):
     def __init__(self, estacao, nome):
         self.nome = nome
         self.estacao = estacao
 
     @abstractmethod
     def efeito_bioma(self):
-        pass
+        pass    
 
-class Tundra(Bioma):
+class Tundra(bioma):
     def __init__(self, estacao, nome):
         super().__init__(estacao, nome)
         
@@ -27,22 +28,22 @@ class Tundra(Bioma):
 
     def efeito_bioma(self):
         if self.estacao =="inverno":
-            self.coracao.aumentar_batimento += 15
+            self.organismo.coracao.batimento += 15
             self.organismo.temperatura -= 2
         
         elif self.estacao == "verão":
-            self.organismo.batimento += 10
+            self.organismo.coracao.batimento += 10
             self.organismo.temperatura -= 1
 
         else:
-            self.organismo.batimento += 7
+            self.organismo.coracao.batimento += 7
             self.organismo.temperatura -= 0.5
 
 
     
 
 
-class Floresta_Temperada(Bioma):
+class Floresta_Temperada(bioma):
     def __init__(self, estacao, nome):
         super().__init__(estacao, nome)
 
@@ -69,7 +70,7 @@ class Floresta_Temperada(Bioma):
             
         
 
-class Deserto(Bioma):
+class Deserto(bioma):
     def __init__(self, estacao, nome):
         super().__init__(estacao, nome)
 
@@ -101,60 +102,97 @@ class Organismo():
         self.nome = nome
         self.idade = idade
         self.bioma = bioma
+        
         self.hidratacao = 100
         self.temperatura = 36.5
-        self.batimento = 85
         self.cerebro = Cerebro() 
         self.coracao = Coracao()
 
     def Escalar(self, altura):
  
         self.cerebro.oxigenacao_cerebro -= 10 * altura/3000
+        self.bioma.organismo = self
         self.bioma.efeito_bioma()
 
-        if  self.oxigenacao_cerebro >= 95:
+        if  self.cerebro.oxigenacao_cerebro >= 95:
+            print("")
             print("ok!")
-            print(self.cerebro.oxigenacao_cerebro())
- 
-        elif self.cerebro.oxigenacao_cerebro <= 94 and self.oxigenacao_cerebro >= 90:
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro}") 
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura}")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
+            
+        elif self.cerebro.oxigenacao_cerebro <= 94 and self.cerebro.oxigenacao_cerebro >= 90:
             self.cerebro.diminuir_impulsos()
+            print("")
             print("!!CUIDADO!! HIPOXEMIA LEVE A MODERADA")
             print("SINTOMAS: Falta de ar / Tontura / Dificuldade para raciocinar ") 
-            print(self.cerebro.oxigenacao_cerebro())
             
-        elif self.cerebro.oxigenacao_cerebro <= 89 and self.oxigenacao_cerebro >= 85:
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura }")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
+            
+        elif self.cerebro.oxigenacao_cerebro <= 89 and self.cerebro.oxigenacao_cerebro >= 85:
             
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
+            print("")
             print("!!CUIDADO!! HIPOXEMIA SEVERA")
             print("SINTOMAS: Falta de ar intensa / Tontura forte / inicio de Cianose ")
-            print(self.cerebro.oxigenacao_cerebro())
             
-        elif self.cerebro.oxigenacao_cerebro <= 84 and self.oxigenacao_cerebro >= 80:
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura}")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
+           
+            
+        elif self.cerebro.oxigenacao_cerebro <= 84 and self.cerebro.oxigenacao_cerebro >= 80:
             
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
+            print("")
             print("!!CUIDADO!! Os órgãos vitais (cérebro, rins e coração) começam a entrar em sofrimento por falta de oxigênio crônica. O cérebro começa a reduzir suas funções para poupar energia.")
             print("SINTOMAS: letargia, desorientação total no tempo e espaço, extrema dificuldade para falar ou se manter acordado, além de palidez extrema.")
-            print(self.cerebro.oxigenacao_cerebro())
+            
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura}")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
         
-        elif self.cerebro.oxigenacao_cerebro <= 80 and self.oxigenacao_cerebro >= 71:
+        elif self.cerebro.oxigenacao_cerebro <= 80 and self.cerebro.oxigenacao_cerebro >= 71:
              
-             self.cerebro.diminuir_impulsos()
-             self.cerebro.diminuir_impulsos()
-             self.cerebro.diminuir_impulsos()
-             print("!!CUIDADO!! O cérebro corre risco iminente de sofrer lesões permanentes devido à falta prolongada de oxigenação.")
-             print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.") 
-             print(self.cerebro.oxigenacao_cerebro())
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
+            self.cerebro.diminuir_impulsos()
+            print("")
+            print("!!CUIDADO!! O cérebro corre risco iminente de sofrer lesões permanentes devido à falta prolongada de oxigenação.")
+            print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.") 
+             
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura}")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
         else:
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
+            print("")
             print("VocÊ tem 6 minutos até lesões irreversíveis nas células cerebrais")
             print("Você tem 10 minuros até sua morte, Boa sorte")
-            print(self.cerebro.oxigenacao_cerebro())
+            
+            print("")
+            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
+            print(f"hidratação : {self.hidratacao}")
+            print(f"temperatura corporal: {self.temperatura}")
+            print(f"batimento cardíaco: {self.coracao.batimento}")
 
     
 
