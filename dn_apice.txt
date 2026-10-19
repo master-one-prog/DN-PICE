@@ -1,0 +1,30 @@
+drop database if exists dn_apice;
+create database dn_apice;
+use dn_apice;
+create table bioma(codigo int not null primary key,
+   nome varchar(100) not null,
+   estacao varchar(100));
+
+create table organismo(nome varchar(100) not null primary key,
+   idade int not null,
+   bioma varchar(100) not null,
+   hidratacao valor decimal(10, 2) not null,
+   temperatura valor decimal(10, 2) not null,
+   batimento valor decimal(10, 2) not null,
+   cerebro varchar(100) not null,
+   coracao varchar(100) not null,;
+
+create table coracao(batimento valor decimal(10, 2);
+
+create table cerebro(
+	oxigenacao int not null primary key,
+   	impulsos_nervosos int not null
+);
+
+insert into bioma values(
+
+insert into organismo values(
+
+insert into coracao values(
+
+insert into cerebro values(
