@@ -12,9 +12,9 @@ create table organismo(nome varchar(100) not null primary key,
    temperatura valor decimal(10, 2) not null,
    batimento valor decimal(10, 2) not null,
    cerebro varchar(100) not null,
-   coracao varchar(100) not null,;
+   coracao varchar(100) not null);
 
-create table coracao(batimento valor decimal(10, 2);
+create table coracao(batimento valor decimal(10, 2));
 
 create table cerebro(
 	oxigenacao int not null primary key,
