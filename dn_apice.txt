@@ -21,10 +21,17 @@ create table cerebro(
    	impulsos_nervosos int not null
 );
 
-insert into bioma values(
+insert into bioma values("Tundra", "Inverno"),
+			("Tundra", "Verão"),
+			("Deserto", "Inverno"),
+			("Deserto", "Verão"),
+ 			("Floresta Temperada", "Inverno"),
+			("Floresta Temperada", "Verão");
 
-insert into organismo values(
+insert into organismo values(18, "Tundra", 100, 36.5, 85),
+			    (18, "Deserto", 100, 36.5, 85),
+			    (18, "Floresta Temperada", 100, 36.5, 85);
 
-insert into coracao values(
+insert into coracao values(85);
 
-insert into cerebro values(
+insert into cerebro values(100, 30);
