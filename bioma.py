@@ -108,21 +108,16 @@ class Organismo():
         self.cerebro = Cerebro() 
         self.coracao = Coracao()
 
-    def Escalar(self, altura):
- 
-        self.cerebro.oxigenacao_cerebro -= 10 * altura/3000
-        self.bioma.organismo = self
-        self.bioma.efeito_bioma()
-
+    def efeitos_açao(self):
         if  self.cerebro.oxigenacao_cerebro >= 95:
-            print("")
-            print("ok!")
-            print("")
-            print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro}") 
-            print(f"hidratação : {self.hidratacao}")
-            print(f"temperatura corporal: {self.temperatura}")
-            print(f"batimento cardíaco: {self.coracao.batimento}")
-            
+                    print("")
+                    print("ok!")
+                    print("")
+                    print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro}") 
+                    print(f"hidratação : {self.hidratacao}")
+                    print(f"temperatura corporal: {self.temperatura}")
+                    print(f"batimento cardíaco: {self.coracao.batimento}")
+                    
         elif self.cerebro.oxigenacao_cerebro <= 94 and self.cerebro.oxigenacao_cerebro >= 90:
             self.cerebro.diminuir_impulsos()
             print("")
@@ -148,7 +143,7 @@ class Organismo():
             print(f"hidratação : {self.hidratacao}")
             print(f"temperatura corporal: {self.temperatura}")
             print(f"batimento cardíaco: {self.coracao.batimento}")
-           
+            
             
         elif self.cerebro.oxigenacao_cerebro <= 84 and self.cerebro.oxigenacao_cerebro >= 80:
             
@@ -166,14 +161,14 @@ class Organismo():
             print(f"batimento cardíaco: {self.coracao.batimento}")
         
         elif self.cerebro.oxigenacao_cerebro <= 80 and self.cerebro.oxigenacao_cerebro >= 71:
-             
+                
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
             self.cerebro.diminuir_impulsos()
             print("")
             print("!!CUIDADO!! O cérebro corre risco iminente de sofrer lesões permanentes devido à falta prolongada de oxigenação.")
             print("Perda de consciência (desmaio/coma), convulsões e risco imediato de parada cardiorrespiratória.") 
-             
+                
             print("")
             print(f"oxigenação do cérebro: {self.cerebro.oxigenacao_cerebro} ")
             print(f"hidratação : {self.hidratacao}")
@@ -194,7 +189,33 @@ class Organismo():
             print(f"temperatura corporal: {self.temperatura}")
             print(f"batimento cardíaco: {self.coracao.batimento}")
 
-    
+    def Escalar(self, altura):
+ 
+        self.cerebro.oxigenacao_cerebro -= 10 * altura/3000
+        self.bioma.organismo = self
+        self.bioma.efeito_bioma()
+        self.efeitos_açao()
+
+        
+    def Correr(self, distancia):
+        self.cerebro.oxigenacao_cerebro -= 5 * distancia/3000
+        self.bioma.organismo = self
+        self.bioma.efeito_bioma()
+        self.efeitos_açao()
+
+    def Nadar(self, distancia):
+        self.cerebro.oxigenacao_cerebro -= 9 * distancia/3000
+        self.bioma.organismo = self
+        self.bioma.efeito_bioma()
+        self.efeitos_açao() 
+
+    def Pular(self, forca_impulso):
+        self.cerebro.oxigenacao_cerebro -= 7 * forca_impulso/3000
+        self.bioma.organismo = self
+        self.bioma.efeito_bioma()
+        self.efeitos_açao()
+
+
 
 
 # orgãos
