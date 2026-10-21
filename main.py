@@ -1,10 +1,10 @@
-from bioma import bioma
-from bioma import Tundra
-from bioma import Floresta_Temperada
-from bioma import Deserto
-from bioma import Organismo
-from bioma import Coracao
-from bioma import Cerebro
+from Bioma import bioma
+from Bioma import Tundra
+from Bioma import Floresta_Temperada
+from Bioma import Deserto
+from Organismo import Organismo
+from Coracao import Coracao
+from Cerebro import Cerebro
 
 
 
@@ -50,7 +50,8 @@ while True:
     # 1- Escalar 
     # 2- Correr
     # 3- Nadar
-    # 4- Pular""" )
+    # 4- Pular
+    # 5- Mostrar status""" )
 
 
     print("")
@@ -71,6 +72,9 @@ while True:
     elif acao == 4:
         forca_impulso = int(input("Qual a força de impulso você deseja? (em Newtons)"))
         corpo.Pular(forca_impulso)
+
+    elif acao == 5:
+        corpo.mostrar_status()
 
     opcao = input("Deseja continuar jogando? (s/n)")
     if opcao == "s" or opcao == "S":
